@@ -1,6 +1,6 @@
 import applescript from 'applescript';
 
-const scriptPath = `${nw.__dirname}/src/core/scripts`;
+const scriptPath = process.env.NODE_ENV === 'development' ? `${nw.__dirname}/public/scripts` : `${nw.__dirname}/scripts`;
 
 export const isOpen = async () => new Promise((resolve, reject) => {
   applescript.execFile(`${scriptPath}/spotifyIsOpen.applescript`, (err, result) => {
