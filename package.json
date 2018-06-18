@@ -58,7 +58,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "dist": "cd build/musync-mac/osx64/ && tar -cvzf MuSync-mac-x64.tar.gz musync-mac.app",
+    "dist": "cd build/musync-mac/osx64/ && tar -cvzf musync-mac-x64.tar.gz musync-mac.app",
     "test": "node scripts/test.js --env=jsdom"
   },
   "main": "index.html",
