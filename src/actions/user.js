@@ -311,13 +311,13 @@ export const playTrack = (broadcaster) => async (dispatch, getState) => {
     const state = getState();
 
     if (broadcaster.player === 'spotify') {
-      if (false) { // check spotify is open and running
+      if (state.spotify.isOpen && state.spotify.isRunning && broadcaster.spotifyId) {
         await handleSpotifyPlayback(broadcaster);
       } else if (state.apple.musickit.isAuthorized && broadcaster.appleId) {
         await handleApplePlayback(state.apple.musickit, broadcaster);
       }
     } else if (broadcaster.player === 'apple') {
-      if (false) {  // check apple is authroized
+      if (state.apple.musickit.isAuthorized && broadcaster.appleId) {
         await handleApplePlayback(state.apple.musickit, broadcaster);
       } else if (state.spotify.isOpen && state.spotify.isRunning && broadcaster.spotifyId) {
         await handleSpotifyPlayback(broadcaster);

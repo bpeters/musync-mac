@@ -19,11 +19,12 @@ class Broadcasters extends Component {
       const newListener = _.find(nextProps.broadcasters, { uid: nextProps.listeningWith}) || {};
 
       if (
-        oldListener.trackId !== newListener.trackId ||
+        (newListener.trackId && oldListener.trackId !== newListener.trackId) ||
         (oldListener.trackId === newListener.trackId && oldListener.position !== newListener.position)
       ) {
-        console.log(newListener);
         this.props.playTrack(newListener);
+      } else if (!newListener.trackId) {
+        this.props.listenWith(null);
       }
     }
   }
