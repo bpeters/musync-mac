@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+<!--     <meta name="apple-music-developer-token" content="eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IkQ0N1RVQjQzMjMifQ.eyJpc3MiOiJXVkVaWUVMMjhYIiwiaWF0IjoxNTI4ODYyOTI5LCJleHAiOjE1NDQ2Mzk5Mjl9.di0wYxaJ1buvBnUuR-JhVgetUDEFG7bObGjdk7U1tA-sI68-22EK1JU1oxmAh6Jb-28P8f4aje1wYMOdy9WdTA">
+    <meta name="apple-music-app-name" content="Musync">
+    <meta name="apple-music-app-build" content="1"> -->
+    <script>
+      let publicPath = '/';
+      if (process.env.NODE_ENV === 'development') {
+        const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
+        const host = process.env.HOST || '0.0.0.0';
+        const port = parseInt(process.env.PORT, 10) || 3000;
+        publicPath = protocol + '://' + host + ':' + port + '/';
+      }
+    </script>
+    <title>MuSync</title>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root"></div>
+    <script src="https://js-cdn.music.apple.com/musickit/v1/musickit.js"></script>
+    <script>
+      document.addEventListener('musickitloaded', function() {
+        const event = new Event('musickit');
+
+        setTimeout(function(){
+          document.dispatchEvent(event);
+        }, 2000);
+      });
+    </script>
+    <script>
+      // manifest.json provides metadata used when your web app is added to the
+      // homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+      let link = document.createElement('link');
+      link.rel = 'manifest';
+      link.href = publicPath + 'manifest.json';
+      document.getElementsByTagName('head')[0].appendChild(link);
+
+      link = document.createElement('link');
+      link.rel = 'shortcut icon';
+      link.href = publicPath + 'favicon.ico';
+      document.getElementsByTagName('head')[0].appendChild(link);
+
+      if (process.env.NODE_ENV === 'development') {
+        document.write('<script src="' + publicPath + 'static/js/bundle.js"><\/script>');
+      }
+    </script>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
