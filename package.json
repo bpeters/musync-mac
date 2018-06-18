@@ -62,6 +62,19 @@
   },
   "main": "index.html",
   "node-main": "src/main.js",
+  "window": {
+    "title": "MuSync",
+    "icon": "./src/logo.png",
+    "toolbar": false,
+    "frame": true,
+    "width": 800,
+    "height": 800,
+    "position": "center",
+    "min_width": 800,
+    "min_height": 400,
+    "max_width": 1600,
+    "max_height": 1600
+  },
   "nwBuilder": {
     "//": "https://github.com/nwjs-community/nw-builder",
     "platforms": [
